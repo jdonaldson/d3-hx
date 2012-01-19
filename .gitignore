@@ -1,2 +1,2 @@
 *.tmproj
-bin/
+bin/*.js
