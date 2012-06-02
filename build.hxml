@@ -1,5 +1,6 @@
 #build file
 -cp src
+-cp demo
 -main Demo
 -js bin/demo.js
 # @tm-preview

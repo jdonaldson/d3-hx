@@ -85,7 +85,7 @@ extern class Selection<T> extends BaseSelection{
 	@:overload(function(value:Dynamic->Int->String):Selection<T>{})
 	public function text(value:String) : Selection<T>;
 	
-	@:overload(function():String<T>{})  
+	@:overload(function():String{})  
 	@:overload(function(value:Void->String):Selection<T>{})  
 	@:overload(function(value:Dynamic->String):Selection<T>{})  
 	@:overload(function(value:Dynamic->Int->String):Selection<T>{})
@@ -158,7 +158,7 @@ extern class UnboundSelection extends BaseSelection{
 	@:overload(function(value:Dynamic->Int->String):UnboundSelection{})
 	public function text(value:String) : UnboundSelection;
 	
-	@:overload(function():String<T>{})  
+	@:overload(function():String{})  
 	@:overload(function(value:Void->String):UnboundSelection{})  
 	@:overload(function(value:Dynamic->String):UnboundSelection{})  
 	@:overload(function(value:Dynamic->Int->String):UnboundSelection{})
@@ -196,7 +196,7 @@ extern class EnterSelection<T>{
 	public function insert(name:String, ?before:String) : Selection<T>;
 }
 
-extern class BaseSelection extends D3Array<HtmlDom>{
+extern class BaseSelection implements ArrayAccess<HtmlDom>{
 	public function empty():Bool;
 	public function node():HtmlDom;	
 }
@@ -208,33 +208,6 @@ extern enum Priority{
 class InitPriority{
 	static var init = {untyped __js__('Priority = { important : "important"};');} 
 }
-
-extern class D3Array<T> implements ArrayAccess<T>{
-	public function reverse():Void;
-	public function shift():T;
-	public function splice(index:Int, howMany:Int, ?opt1:T, ?opt2:T, ?opt3:T, ?opt4:T, ?opt5:T, ?opt6:T): D3Array<T>;
-	public function unshift(arg:T,?opt1:T, ?opt2:T, ?opt3:T, ?opt4:T, ?opt5:T, ?arg6:T):Void;
-	public function concat(arg:T,?opt1:T, ?opt2:T, ?opt3:T, ?opt4:T, ?opt5:T, ?arg6:T):D3Array<T>;
-	public function join(separator:String):String;
-	public function slice(begin:Int, ?end:Int):D3Array<T>;
-	public function indexOf(searchElement:T, ?fromIndex:Int):Int;
-	public function lastIndexOf(searchElement:T, ?fromIndex:Int):Int;
-	public function forEach(cb:T->Dynamic, ?thisArg:Dynamic):Void;
-	public function every(cb:T->Bool, ?thisObject:Dynamic):Bool;
-	public function some(cb:T->Bool, ?thisObject:Dynamic):Bool;
-	public function reduce<A>(cb:T->A->Int->D3Array<T>, ?initialValue:A):A;	
-	public function reduceRight<A>(cb:T->A->Int->D3Array<T>, ?initialValue:A):A;
-}
-
-class D3ArrayCast{
-	public static function array<T>(arr:D3Array<T>):Array<T>{
-		return untyped arr;
-	}
-	public static function d3array<T>(arr:Array<T>):D3Array<T>{
-		return untyped arr;
-	}
-}
-
 
 
 
