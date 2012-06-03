@@ -201,13 +201,13 @@ extern class BaseSelection implements ArrayAccess<HtmlDom>{
 	public function node():HtmlDom;	
 }
 
+@:native("js.d3._D3.InitPriority")
 extern enum Priority{
-	important;	
+    important;
 }
 
-class InitPriority{
-	static var init = {untyped __js__('Priority = { important : "important"};');} 
+private class InitPriority{
+    static var important = 'important';
 }
-
 
 
