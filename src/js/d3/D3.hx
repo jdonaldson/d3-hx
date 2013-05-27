@@ -1,5 +1,5 @@
 package js.d3;
-import js.Dom;
+typedef HtmlDom = js.html.Node;
 
 @:native("d3")
 extern class D3
@@ -10,7 +10,8 @@ extern class D3
     @:overload(function(selector:Array<HtmlDom>):UnboundSelection{})
     public static function selectAll(selector:String):UnboundSelection;
 
-    public static var event:Event;
+    public static var event:js.html.Event;
+
 
     /* sorting helpers */
     public static function ascending<T>(a:T, b:T):Int;
@@ -97,10 +98,10 @@ extern class Selection<T> extends BaseSelection{
 
     @:overload(function<A>(?dataf:T->Array<A>):PreEnterSelection<A>{})	
     @:overload(function<A>(?dataf:T->Int->Array<A>):PreEnterSelection<A>{})
-    @:overload(function(data:Array<A>,?key:A->Int->Dynamic):PreEnterSelection<A>{})  
+    @:overload(function<A>(data:Array<A>,?key:A->Int->Dynamic):PreEnterSelection<A>{})  
     public function data<A>(data:Array<A>, ?key:A->Dynamic):PreEnterSelection<A>;
 
-    @:overload(function(fn:T->Int->A):Selection<A>{})
+    @:overload(function<A>(fn:T->Int->A):Selection<A>{})
     public function map<A>(fn:T->A):Selection<A>;
 
     public function sort(comparator:T->T->Int):Selection<T>;
@@ -168,7 +169,7 @@ extern class UnboundSelection extends BaseSelection{
     public function insert(name:String, ?before:String) : UnboundSelection;
     public function remove() : UnboundSelection;
 
-    @:overload(function(data:Array<T>,?key:T->Int->Dynamic):PreEnterSelection<T>{})
+    @:overload(function<T>(data:Array<T>,?key:T->Int->Dynamic):PreEnterSelection<T>{})
     public function data<T>(data:Array<T>,?key:T->Dynamic):PreEnterSelection<T>;
 
     public function order():UnboundSelection;
