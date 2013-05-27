@@ -1,5 +1,4 @@
 import js.d3.D3;
-using js.HTML5Array;
 class Demo {
     public static function main(){
         trace('hi');
@@ -9,9 +8,7 @@ class Demo {
             return 'hi';
         })
         .style("background-color","grey");
+        untyped phantom.exit();
     }
 
-    public static function bar(arr:Array<Dynamic>) {
-        trace(arr);
-    }
 }
